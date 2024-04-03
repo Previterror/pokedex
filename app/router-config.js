@@ -1,7 +1,7 @@
 import { AccountController } from "./controllers/AccountController.js";
 import { HomeController } from "./controllers/HomeController.js";
-import { PokeController } from "./controllers/PokeController.js";
-import { SandboxController } from "./controllers/SandboxController.js";
+import { PokeController } from "./controllers/WildPokemonsController.js";
+import { SandboxController } from "./controllers/SandboxPokemonsController.js";
 import { AuthGuard } from "./services/AuthService.js";
 import { Router } from "./utils/Router.js";
 
