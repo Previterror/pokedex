@@ -1,4 +1,5 @@
 import { AppState } from "../AppState.js";
+import { Pokemon } from "../models/Pokemon.js";
 
 
 
@@ -14,7 +15,15 @@ class PokeService {
         const response = await pokeApi.get('pokemon')
         // console.log('👹🔧', response);
         AppState.wildpokemons = response.data.results
-        console.log('👹🔧', AppState.wildpokemons);
+        // console.log('👹🔧', AppState.wildpokemons);
+    }
+
+    async setActivePokemon(pokemonName) {
+        const response = await pokeApi.get(`/pokemon/${pokemonName}`)
+        console.log('setting', response.data)
+        const ActivePokemon = new Pokemon(response.data)
+        AppState.activePokemon = ActivePokemon
+        console.log(AppState.activePokemon);
     }
 
 }

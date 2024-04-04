@@ -1,7 +1,7 @@
 import { AccountController } from "./controllers/AccountController.js";
 import { HomeController } from "./controllers/HomeController.js";
-import { PokeController } from "./controllers/WildPokemonsController.js";
-import { SandboxController } from "./controllers/SandboxPokemonsController.js";
+import { WildPokemonsController } from "./controllers/WildPokemonsController.js";
+import { SandboxPokemonsController } from "./controllers/SandboxPokemonsController.js";
 import { AuthGuard } from "./services/AuthService.js";
 import { Router } from "./utils/Router.js";
 
@@ -9,7 +9,7 @@ import { Router } from "./utils/Router.js";
 export const router = new Router([
   {
     path: '',
-    controllers: [PokeController, SandboxController],
+    controllers: [SandboxPokemonsController, WildPokemonsController],
     view: 'app/views/PokedexView.html'
   },
   {

@@ -4,12 +4,18 @@ import { wildPokemonsService } from "../services/WildPokemonsService.js";
 import { Pop } from "../utils/Pop.js";
 import { setHTML } from "../utils/Writer.js";
 
-export class PokeController {
+export class WildPokemonsController {
     constructor() {
-        console.log('Poke online')
+        // console.log('Poke online')
         AppState.on('wildpokemons', this.drawWildPokemons)
+        AppState.on('activePokemon', this.drawActivePokemon)
         this.getPokemons()
 
+    }
+
+    drawActivePokemon() {
+        const activePokemon = AppState.activePokemon
+        setHTML('activemon', activePokemon.activePokemonCard)
     }
 
     async getPokemons() {
@@ -24,9 +30,12 @@ export class PokeController {
     drawWildPokemons() {
         const wildPokemons = AppState.wildpokemons
         let wildPokemonsList = ''
-        wildPokemons.forEach(pokemon => wildPokemonsList += Pokemon.wildListTemplate(pokemon.name))
+        wildPokemons.forEach(pokemon => wildPokemonsList += Pokemon.ListTemplate(pokemon.name))
         setHTML('monlist', wildPokemonsList)
     }
 
-
+    setActivePokemon(pokemonName) {
+        // console.log('setting', pokemonName)
+        wildPokemonsService.setActivePokemon(pokemonName)
+    }
 }
