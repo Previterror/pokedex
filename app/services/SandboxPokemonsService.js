@@ -8,9 +8,11 @@ class SandboxService {
 
     async getPokemons() {
         const response = await api.get('api/pokemon')
-        console.log('sandbox', response);
+        console.log('sandbox getting my pokemon', response);
         // AppState.mypokemons = response.data.results
         // console.log('👹🔧', AppState.wildpokemons);
+        let mypokemons = response.data.map(pokemon => mypokemons += new Pokemon(pokemon))
+        AppState.mypokemons = mypokemons
     }
 
 

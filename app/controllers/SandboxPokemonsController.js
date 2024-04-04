@@ -7,7 +7,8 @@ import { setHTML } from "../utils/Writer.js";
 export class SandboxPokemonsController {
     constructor() {
         console.log('Sandbox online')
-        this.getPokemons()
+        AppState.on('account', this.getPokemons)
+        AppState.on('mypokemons', this.drawMyPokemons)
     }
 
     async catchActive() {
@@ -22,6 +23,7 @@ export class SandboxPokemonsController {
     async getPokemons() {
         try {
             await sandboxService.getPokemons()
+
         } catch (error) {
             console.error(error)
             Pop.toast("Could Not find your Pokemen", 'error')
